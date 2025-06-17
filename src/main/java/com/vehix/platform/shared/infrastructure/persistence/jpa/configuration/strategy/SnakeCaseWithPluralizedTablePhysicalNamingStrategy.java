@@ -3,6 +3,7 @@ package com.vehix.platform.shared.infrastructure.persistence.jpa.configuration.s
 import org.hibernate.boot.model.naming.Identifier;
 import org.hibernate.boot.model.naming.PhysicalNamingStrategy;
 import org.hibernate.engine.jdbc.env.spi.JdbcEnvironment;
+
 import static io.github.encryptorcode.pluralize.Pluralize.pluralize;
 
 /**
@@ -12,7 +13,7 @@ import static io.github.encryptorcode.pluralize.Pluralize.pluralize;
  *
  * @since 1.0.0
  */
-public class SnakeCaseWithPluralizedTablePhysicalNamingStrategy implements PhysicalNamingStrategy{
+public class SnakeCaseWithPluralizedTablePhysicalNamingStrategy implements PhysicalNamingStrategy {
     @Override
     public Identifier toPhysicalCatalogName(Identifier identifier, JdbcEnvironment jdbcEnvironment) {
         return null;
