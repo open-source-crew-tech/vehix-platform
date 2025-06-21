@@ -1,5 +1,7 @@
 package com.vehix.platform.monitoring.domain.model.valueobjects;
 
+import jakarta.persistence.Embeddable;
+
 /**
  * Value Object representing a Vehicle ID.
  * @summary
@@ -9,7 +11,7 @@ package com.vehix.platform.monitoring.domain.model.valueobjects;
  * @see IllegalArgumentException
  * @since 1.0.0
  */
-
+@Embeddable
 public record VehicleId(int vehicleId) {
     public VehicleId{
         if (vehicleId <= 0)
