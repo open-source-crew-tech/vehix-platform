@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 public interface FailureRepository extends JpaRepository<Failure, Long> {
-    List<Failure> findByErrorType(ErrorType errorType);
+    List<Failure> findByType(FailureType type);
     List<Failure> findAllBySuggestSolution(String suggestSolution);
     List<Failure> findAllByStatus(FailureStatus status);
     List<Failure> findAllByType(FailureType type);

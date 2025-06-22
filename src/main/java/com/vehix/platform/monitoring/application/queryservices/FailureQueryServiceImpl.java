@@ -5,6 +5,7 @@ import com.vehix.platform.monitoring.domain.model.queries.GetAllFailuresByErrorT
 import com.vehix.platform.monitoring.domain.model.queries.GetAllFailuresQuery;
 import com.vehix.platform.monitoring.domain.model.queries.GetFailureByIdQuery;
 import com.vehix.platform.monitoring.domain.model.valueobjects.ErrorType;
+import com.vehix.platform.monitoring.domain.model.valueobjects.FailureType;
 import com.vehix.platform.monitoring.domain.services.FailureQueryService;
 import com.vehix.platform.monitoring.infrastructure.persistence.jpa.repositories.FailureRepository;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,8 @@ public class FailureQueryServiceImpl implements FailureQueryService {
 
     @Override
     public List<Failure> handle(GetAllFailuresByErrorTypeQuery query) {
-        return failureRepository.findByErrorType(ErrorType.valueOf(query.errorType()));
+        // Supongamos que el query trae el valor de tipo ErrorType
+        FailureType failureType = FailureType.valueOf(query.errorType()); // Conversión de ErrorType a FailureType
+        return failureRepository.findByType(failureType);
     }
 }
