@@ -32,4 +32,8 @@ public class BadPractice {
     public BadPractice(CreateBadPracticeCommand command) {
         this(command.descriptionBadPractice());
     }
+
+    public boolean isEmpty() {
+        return this.descriptionBadPractice == null || this.descriptionBadPractice.isBlank();
+    }
 }

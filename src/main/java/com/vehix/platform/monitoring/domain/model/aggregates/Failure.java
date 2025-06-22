@@ -15,18 +15,17 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-
 public class Failure extends AuditableAbstractAggregateRoot<Failure> {
     @Column(nullable = false)
     private String suggestSolution;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bad_practice_id")
-    private BadPractice badPractice;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "bad_practice_id")
+    private String badPractice;
+
+
     @JoinColumn(name = "odb_error_id")
-    private OdbError odbError;
+    private String odbError;
 
     @Embedded
     private VehicleId vehicleId;
@@ -42,8 +41,6 @@ public class Failure extends AuditableAbstractAggregateRoot<Failure> {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private FailureUrgency urgency;
-
-
     protected Failure() {
         this.suggestSolution = "";
         this.vehicleId = null;
@@ -53,16 +50,7 @@ public class Failure extends AuditableAbstractAggregateRoot<Failure> {
 
     }
 
-
-    /**
-     * Constructor for creating a Failure with all required fields.
-     *
-     * @param badPractice The BadPractice entity associated with the failure.
-     * @param odbError The OdbError entity associated with the failure.
-     * @param suggestSolution Suggested solution for the failure.
-     * @param vehicleId The VehicleId associated with the failure.
-     */
-    public Failure(BadPractice badPractice, OdbError odbError, String suggestSolution, VehicleId vehicleId) {
+    public Failure(String badPractice, String odbError, String suggestSolution, VehicleId vehicleId) {
         this();
         if (badPractice == null) {
             throw new IllegalArgumentException("BadPractice cannot be null.");
@@ -84,12 +72,6 @@ public class Failure extends AuditableAbstractAggregateRoot<Failure> {
 
     }
 
-    /**
-     * Constructor for creating a Failure with a command object.
-     * This constructor is typically used in an application service to create a new Failure.
-     *
-     * @param command The CreateFailureCommand containing the necessary data to create a Failure.
-     */
     public Failure(CreateFailureCommand command) {
         this();
         this.suggestSolution = command.suggestSolution();
@@ -103,7 +85,7 @@ public class Failure extends AuditableAbstractAggregateRoot<Failure> {
      *
      * @param badPractice The BadPractice entity to associate.
      */
-    public void addBadPracticeToFailure(BadPractice badPractice) {
+    public void addBadPracticeToFailure(String badPractice) {
         if (badPractice == null) {
             throw new IllegalArgumentException("Bad practice to add cannot be null.");
         }
@@ -117,7 +99,7 @@ public class Failure extends AuditableAbstractAggregateRoot<Failure> {
      *
      * @param odbError The OdbError entity to associate.
      */
-    public void addOdbErrorToFailure(OdbError odbError) {
+    public void addOdbErrorToFailure(String odbError) {
         if (odbError == null) {
             throw new IllegalArgumentException("ODB error to add cannot be null.");
         }

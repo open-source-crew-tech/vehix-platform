@@ -1,7 +1,13 @@
 package com.vehix.platform.monitoring.domain.model.events;
 
+import com.vehix.platform.monitoring.domain.model.commands.CreateBadPracticeCommand;
+import com.vehix.platform.monitoring.domain.model.entities.BadPractice;
+import com.vehix.platform.monitoring.infrastructure.persistence.jpa.repositories.BadPracticeRepository;
+import jakarta.transaction.Transactional;
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
+
+import java.util.Optional;
 
 @Getter
 public class BadPracticeCreatedEvent extends ApplicationEvent {

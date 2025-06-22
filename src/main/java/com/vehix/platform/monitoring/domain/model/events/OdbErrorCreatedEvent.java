@@ -1,7 +1,9 @@
 package com.vehix.platform.monitoring.domain.model.events;
 
+import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
 
+@Getter
 public class OdbErrorCreatedEvent extends ApplicationEvent {
     private final String errorCode;
     private final String errorCodeTitle;

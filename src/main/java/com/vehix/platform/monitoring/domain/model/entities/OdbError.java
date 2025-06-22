@@ -52,4 +52,11 @@ public class OdbError {
     public OdbError(CreateOdbErrorCommand command) {
         this(command.errorCode(), command.errorCodeTitle(), command.errorType());
     }
+
+    public Object getErrorType() {
+        if (this.type == null) {
+            return this.errorTypeString;
+        }
+        return this.type.toString();
+    }
 }
