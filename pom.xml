@@ -52,8 +52,9 @@
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
-            <scope>runtime</scope>
+            <version> 9.2.0 </version> <!-- O la última estable -->
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
