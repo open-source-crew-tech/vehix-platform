@@ -3,9 +3,11 @@ package com.vehix.platform.monitoring.domain.model.entities;
 import com.vehix.platform.monitoring.domain.model.valueobjects.ErrorType;
 import jakarta.persistence.*;
 import com.vehix.platform.monitoring.domain.model.commands.CreateOdbErrorCommand;
+import lombok.Getter;
 
 
-
+@Getter
+@Entity
 public class OdbError {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
