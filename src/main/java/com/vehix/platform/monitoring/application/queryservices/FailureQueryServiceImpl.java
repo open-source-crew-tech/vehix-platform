@@ -34,8 +34,7 @@ public class FailureQueryServiceImpl implements FailureQueryService {
 
     @Override
     public List<Failure> handle(GetAllFailuresByErrorTypeQuery query) {
-        // Supongamos que el query trae el valor de tipo ErrorType
-        FailureType failureType = FailureType.valueOf(query.errorType()); // Conversión de ErrorType a FailureType
+        FailureType failureType = FailureType.valueOf(query.errorType());
         return failureRepository.findByType(failureType);
     }
 }
