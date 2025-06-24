@@ -1,6 +1,6 @@
-# Dockerfile for Vehix Platform
+# Dockerfile for catch-up-platform
 # Summary:
-# This Dockerfile builds and run the Vehix Platform application using Maven and OpenJDK 24.
+# This Dockerfile builds and run the catch-up-platform application using Maven and OpenJDK 24.
 # Description:
 # This Dockerfile is designed to build a Spring Boot application using Maven and run it in a lightweight
 # OpenJDK 24 environment. It uses a multi-stage build to keep the final image size small by separating the build
@@ -12,7 +12,6 @@
 # Step 1: Build the application using Maven
 
 # Use a lightweight OpenJDK 24 base image
-
 FROM maven:3.9.9-eclipse-temurin-24 AS build
 # Set the active profile for the Spring Boot application
 ENV SPRING_PROFILES_ACTIVE=prod
@@ -20,9 +19,9 @@ ENV SPRING_PROFILES_ACTIVE=prod
 WORKDIR /app
 COPY pom.xml .
 RUN mvn dependency:go-offline
-# Set the working directory inside the container
+# Copy the Maven project files into the container
 COPY src ./src
-# Build the application using Maven
+# Build the application
 RUN mvn package -DskipTests
 
 # Step 2: Create a runtime image

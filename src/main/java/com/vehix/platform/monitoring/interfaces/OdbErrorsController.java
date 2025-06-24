@@ -91,7 +91,7 @@ public class OdbErrorsController {
         }
         var odbErrorResource = OdbErrorResourceFromEntityAssembler.toResourceFromEntity(odbError.orElse(null));
         return ResponseEntity
-                .created(null) // podrías usar URI.create(...) si manejas ubicación exacta
+                .created(null)
                 .body(odbErrorResource);
     }
 }
